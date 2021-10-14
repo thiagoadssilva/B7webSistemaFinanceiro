@@ -1,7 +1,9 @@
-function App() {
-  return (
-   <div>thiago jose da silva</div>
+import { Container } from "./app.styles";
+
+export default function App(){
+  return(
+    <Container>
+      Thiago jose da silva
+    </Container>
   );
 }
-
-export default App;
