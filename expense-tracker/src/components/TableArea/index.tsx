@@ -1,7 +1,8 @@
+import TableItem from "../TableItem";
 import { 
   Table,
   TableHeadColoumn 
-} from "./styled";
+} from "./styles";
 
 interface Item {
   date: Date;
@@ -28,12 +29,7 @@ export default function TableArea({ list }: TableAreaProps){
       <tbody>
         {list.map((item, index) =>{
           return(
-            <tr key={index}>
-             
-              <td>{item.category}</td>
-              <td>{item.title}</td>
-              <td>{item.value}</td>
-            </tr>
+           <TableItem key={index} item={item}/>
           )
         })}
       </tbody>

@@ -22,3 +22,23 @@ export function filterListByMonth(list: Item[], date: string){
 
   return newList;
 }
+
+export function dateFormat(date: Date){
+  let year = date.getFullYear();
+  let month = date.getMonth() + 1;
+  let day = date.getDay();
+
+  return addZeroLeft(day) + '/' + addZeroLeft(month) + '/' + year;
+}
+
+function addZeroLeft(n: number){
+  if(n < 10){
+    return '0'+n;
+  }else{
+    return n
+  }
+}
+
+export function valueFormat(value: number){
+  return value.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+}
