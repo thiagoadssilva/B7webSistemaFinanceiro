@@ -10,6 +10,7 @@ import {
   Body
 } from "./App.styles";
 import TableArea from "./components/TableArea";
+import InfoArea from "./components/InfoArea";
 
 interface Item {
   date: Date;
@@ -22,10 +23,32 @@ export default function App(){
   const [list, setList] = useState(items);
   const [filteredList, setFilteresList] = useState<Item[]>([]);
   const [currentMonth, setCurrentMonth] = useState(getCurrentMonth());
+  const [income, setIncome] = useState(0);
+  const [expense, setExpense] = useState(0);
 
   useEffect(() =>{
     setFilteresList(filterListByMonth(list, currentMonth));
   },[list, currentMonth]);
+
+  function handleMonthChange(newMonth: string){
+    setCurrentMonth(newMonth);
+  }
+
+  useEffect(() =>{
+    let incomeCount = 0;
+    let expenseCount = 0;
+
+    for(let i in filteredList){
+      if(categories[filteredList[i].category].expense){
+        expenseCount += filteredList[i].value; 
+      }else{
+        incomeCount += filteredList[i].value;
+      }
+    }
+
+    setIncome(incomeCount);
+    setExpense(expenseCount);
+  },[filteredList])
 
   return(
     <Container>
@@ -33,6 +56,10 @@ export default function App(){
         <HerderText>Sistema Para Controle Financeiro</HerderText>
       </Header>
       <Body>
+        <InfoArea currentMonth={currentMonth} onMonthChange={handleMonthChange} income={income} expense={expense}/>
+
+        {/*area de add*/ }
+
         <TableArea list={filteredList}/> 
       </Body>
     </Container>

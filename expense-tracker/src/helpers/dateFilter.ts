@@ -42,3 +42,9 @@ function addZeroLeft(n: number){
 export function valueFormat(value: number){
   return value.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
 }
+
+export function formatCurrentMonth(currentMonth: String){
+  let [year, month] = currentMonth.split('-');
+  let months = ['Janeiro', 'Feverreiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+  return `${months[parseInt(month) - 1]} ${year}`;
+}
