@@ -11,6 +11,7 @@ import {
 } from "./App.styles";
 import TableArea from "./components/TableArea";
 import InfoArea from "./components/InfoArea";
+import { InputArea } from "./components/InputArea";
 
 interface Item {
   date: Date;
@@ -50,6 +51,12 @@ export default function App(){
     setExpense(expenseCount);
   },[filteredList])
 
+  function handleAddItem(item: Item){
+    let newList = [...list];
+    newList.push(item);
+    setList(newList);
+  }
+
   return(
     <Container>
       <Header>
@@ -58,7 +65,7 @@ export default function App(){
       <Body>
         <InfoArea currentMonth={currentMonth} onMonthChange={handleMonthChange} income={income} expense={expense}/>
 
-        {/*area de add*/ }
+        <InputArea onAdd={handleAddItem} />
 
         <TableArea list={filteredList}/> 
       </Body>
