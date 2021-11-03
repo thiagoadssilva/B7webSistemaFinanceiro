@@ -10,7 +10,7 @@ https://github.com/thiagoadssilva/B7webSistemaFinanceiro/blob/main/expense-track
 
 <hr>
 
-## Projeto Publicado: financeb7web.tfcoder.com
+## Projeto Publicado: http://financeb7web.tfcoder.com/
 
 <hr>
 
